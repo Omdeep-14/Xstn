@@ -1,12 +1,16 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import SectionLabel from "../components/ui/SectionLabel";
 import TagPill from "../components/ui/TagPill";
-const ProjectsPage = ({ setPage }) => {
+
+const ProjectsPage = () => {
+  const navigate = useNavigate();
+  const [filter, setFilter] = useState("All");
+
   const go = (p) => {
-    setPage(p);
+    navigate(`/${p}`);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-  const [filter, setFilter] = useState("All");
 
   const allProjects = [
     {
@@ -16,7 +20,6 @@ const ProjectsPage = ({ setPage }) => {
       status: "LIVE",
       progress: 100,
       color: "#34d399",
-      delay: "0.05s",
       desc: "A complete learning management system for 3 partner colleges with 2000+ active users, featuring live quizzes, progress tracking, and admin analytics.",
       tags: ["React", "Node.js", "PostgreSQL"],
     },
@@ -27,7 +30,6 @@ const ProjectsPage = ({ setPage }) => {
       status: "IN SPRINT 3",
       progress: 68,
       color: "#22d3ee",
-      delay: "0.1s",
       desc: "Indoor navigation + AI scheduling assistant deployed across 2 campuses. Uses computer vision for real-time occupancy detection.",
       tags: ["Python", "TensorFlow", "React Native"],
     },
@@ -38,7 +40,6 @@ const ProjectsPage = ({ setPage }) => {
       status: "REVIEW",
       progress: 88,
       color: "#f472b6",
-      delay: "0.15s",
       desc: "End-to-end encrypted document vault with role-based access for SME clients. Passed OWASP Top 10 audit.",
       tags: ["Node.js", "AES-256", "React"],
     },
@@ -49,7 +50,6 @@ const ProjectsPage = ({ setPage }) => {
       status: "PLANNING",
       progress: 22,
       color: "#fb923c",
-      delay: "0.2s",
       desc: "Smart agriculture monitoring with IoT sensors and predictive ML models for crop yield forecasting.",
       tags: ["Python", "AWS IoT", "Flutter"],
     },
@@ -60,7 +60,6 @@ const ProjectsPage = ({ setPage }) => {
       status: "LIVE",
       progress: 100,
       color: "#34d399",
-      delay: "0.25s",
       desc: "Hyperlocal e-commerce platform connecting 50+ local vendors with 3000+ users in a tier-2 city.",
       tags: ["Next.js", "Stripe", "PostgreSQL"],
     },
@@ -71,7 +70,6 @@ const ProjectsPage = ({ setPage }) => {
       status: "IN SPRINT 1",
       progress: 40,
       color: "#a78bfa",
-      delay: "0.3s",
       desc: "Mental wellness app for students with mood tracking, guided meditation, and peer support chat rooms.",
       tags: ["Flutter", "Firebase", "Python"],
     },
@@ -82,7 +80,6 @@ const ProjectsPage = ({ setPage }) => {
       status: "LIVE",
       progress: 100,
       color: "#34d399",
-      delay: "0.35s",
       desc: "Hospital queue management system reducing patient wait times by 40% across 3 clinics.",
       tags: ["React", "Express", "MySQL"],
     },
@@ -93,7 +90,6 @@ const ProjectsPage = ({ setPage }) => {
       status: "IN SPRINT 2",
       progress: 60,
       color: "#22d3ee",
-      delay: "0.4s",
       desc: "XSTN's own internal project management and member portal — built by students, for students.",
       tags: ["Next.js", "Prisma", "Tailwind"],
     },

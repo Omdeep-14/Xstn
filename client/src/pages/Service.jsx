@@ -1,12 +1,16 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import SectionLabel from "../components/ui/SectionLabel";
 import TagPill from "../components/ui/TagPill";
-const ServicesPage = ({ setPage }) => {
+
+const ServicesPage = () => {
+  const navigate = useNavigate();
+  const [activeService, setActiveService] = useState(0);
+
   const go = (p) => {
-    setPage(p);
+    navigate(`/${p}`);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-  const [activeService, setActiveService] = useState(0);
 
   const services = [
     {
@@ -294,8 +298,8 @@ const ServicesPage = ({ setPage }) => {
           <div className="text-center mb-14">
             <SectionLabel>How We Work</SectionLabel>
             <h2 className="section-h2">
-              From brief to
-              <span className="grad-cyan-violet"> production.</span>
+              From brief to{" "}
+              <span className="grad-cyan-violet">production.</span>
             </h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">

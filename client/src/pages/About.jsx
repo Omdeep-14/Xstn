@@ -1,8 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import GlowOrb from "../components/effects/GlowOrb";
 import SectionLabel from "../components/ui/SectionLabel";
-const AboutPage = ({ setPage }) => {
+
+const AboutPage = () => {
+  const navigate = useNavigate();
+
   const go = (p) => {
-    setPage(p);
+    navigate(`/${p}`);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -198,6 +202,7 @@ const AboutPage = ({ setPage }) => {
                 </div>
               </div>
             </div>
+
             {/* Values */}
             <div className="grid grid-cols-1 gap-4">
               {values.map((v, i) => (

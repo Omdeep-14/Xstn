@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
-const Navbar = ({ currentPage, setPage }) => {
+const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 28);
     window.addEventListener("scroll", fn);
@@ -22,10 +24,12 @@ const Navbar = ({ currentPage, setPage }) => {
   ];
 
   const go = (page) => {
-    setPage(page);
+    navigate(`/${page}`);
     setMobileOpen(false);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  const currentPage = location.pathname.replace("/", "") || "home";
 
   return (
     <nav
@@ -82,8 +86,8 @@ const Navbar = ({ currentPage, setPage }) => {
           {links.map((l) => (
             <button
               key={l.label}
-              onClick={() => navigate(`/${l.page}`)}
-              className={`nav-link ${currentPage === l.page && l.page !== "home" ? "active" : ""}`}
+              onClick={() => go(l.page)}
+              className={`nav-link ${currentPage === l.page ? "active" : ""}`}
               style={{ background: "none", border: "none" }}
             >
               {l.label}
@@ -147,7 +151,7 @@ const Navbar = ({ currentPage, setPage }) => {
             <button
               key={l.label}
               onClick={() => go(l.page)}
-              className="block w-full text-left py-3 text-sm border-b text-slate-300 hover:text-cyan-400 transition-colors"
+              className="block w-full text-left py-3 text-sm text-slate-300 hover:text-cyan-400 transition-colors"
               style={{
                 background: "none",
                 border: "none",

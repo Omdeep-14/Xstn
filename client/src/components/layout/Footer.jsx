@@ -1,8 +1,13 @@
-const Footer = ({ setPage }) => {
+import { useNavigate } from "react-router-dom";
+
+const Footer = () => {
+  const navigate = useNavigate();
+
   const go = (p) => {
-    setPage(p);
+    navigate(`/${p}`);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
   return (
     <footer
       className="relative"
@@ -62,6 +67,7 @@ const Footer = ({ setPage }) => {
               ))}
             </div>
           </div>
+
           {[
             {
               title: "Platform",
@@ -111,6 +117,7 @@ const Footer = ({ setPage }) => {
             </div>
           ))}
         </div>
+
         <div
           className="flex flex-col md:flex-row items-center justify-between pt-6 border-t gap-3"
           style={{ borderColor: "rgba(34,211,238,0.06)" }}
