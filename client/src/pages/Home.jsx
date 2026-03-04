@@ -376,7 +376,7 @@ const HomePage = () => {
                   ))}
                 </motion.div>
 
-                {/* CTAs */}
+                {/* CTAs — identical to navbar */}
                 <motion.div
                   variants={fadeUp}
                   initial="hidden"
@@ -387,18 +387,20 @@ const HomePage = () => {
                   <motion.button
                     whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.97 }}
-                    onClick={() => go("join")}
-                    className="rounded-xl px-10 py-4 font-bold text-base cursor-pointer bg-gradient-to-r from-cyan-500 to-violet-500 text-white shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:shadow-[0_0_32px_rgba(34,211,238,0.45)] transition-shadow"
+                    onClick={() => navigate("/login")}
+                    className="btn-ghost rounded-full px-8 py-3.5 font-semibold text-base cursor-pointer"
+                    style={{ fontFamily: "var(--font-display)" }}
                   >
-                    Join the Network →
+                    Log In
                   </motion.button>
                   <motion.button
                     whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.97 }}
-                    onClick={() => go("projects")}
-                    className="rounded-xl px-8 py-4 font-semibold text-base cursor-pointer bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10 hover:border-white/20 transition-colors"
+                    onClick={() => navigate("/signup")}
+                    className="btn-primary rounded-full px-8 py-3.5 font-bold text-base cursor-pointer"
+                    style={{ fontFamily: "var(--font-display)" }}
                   >
-                    View Projects ↗
+                    Join XSTN →
                   </motion.button>
                 </motion.div>
               </div>
@@ -665,16 +667,18 @@ const HomePage = () => {
                   <motion.button
                     whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.97 }}
-                    onClick={() => go("join")}
-                    className="rounded-xl px-12 py-5 font-bold text-base cursor-pointer bg-gradient-to-r from-cyan-500 to-violet-500 text-white shadow-[0_0_24px_rgba(34,211,238,0.35)] hover:shadow-[0_0_40px_rgba(34,211,238,0.5)] transition-shadow"
+                    onClick={() => navigate("/signup")}
+                    className="btn-primary rounded-full px-12 py-5 font-bold text-base cursor-pointer"
+                    style={{ fontFamily: "var(--font-display)" }}
                   >
-                    Apply Now — It's Free
+                    Join XSTN →
                   </motion.button>
                   <motion.button
                     whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.97 }}
                     onClick={() => go("partner")}
-                    className="rounded-xl px-10 py-5 font-semibold text-base cursor-pointer bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10 hover:border-white/20 transition-colors"
+                    className="btn-ghost rounded-full px-10 py-5 font-semibold text-base cursor-pointer"
+                    style={{ fontFamily: "var(--font-display)" }}
                   >
                     Partner With Us →
                   </motion.button>
