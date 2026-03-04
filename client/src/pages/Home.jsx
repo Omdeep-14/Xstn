@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import NetworkCanvas from "../components/effects/NetworkCanvas";
 import GlowOrb from "../components/effects/GlowOrb";
 import TypingTerminal from "../components/effects/TypingTerminal";
@@ -47,7 +48,6 @@ const PulseDot = () => (
 );
 
 // ── Ripple ring ─────────────────────────────────────────────────────────────
-// animate-ping from Tailwind, size/delay via inline style (no custom class).
 const RippleRing = ({ size, delay }) => (
   <span
     className="absolute top-1/2 left-1/2 rounded-full border border-cyan-400/20 -translate-x-1/2 -translate-y-1/2 animate-ping pointer-events-none"
@@ -64,9 +64,11 @@ const RippleRing = ({ size, delay }) => (
 const MARQUEE_CSS = `@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}`;
 
 // ── Component ───────────────────────────────────────────────────────────────
-const HomePage = ({ setPage }) => {
+const HomePage = () => {
+  const navigate = useNavigate();
+
   const go = (p) => {
-    setPage(p);
+    navigate(`/${p}`);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -257,7 +259,7 @@ const HomePage = ({ setPage }) => {
 
       <div className="w-full overflow-hidden">
         {/* ── HERO ── */}
-        <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden bg-slate-950  pb-0">
+        <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden bg-slate-950 pb-0">
           {/* Grid lines */}
           <div className="absolute inset-0 bg-[linear-gradient(rgba(34,211,238,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.03)_1px,transparent_1px)] bg-[size:48px_48px] pointer-events-none" />
           {/* Scanlines */}
@@ -305,7 +307,7 @@ const HomePage = ({ setPage }) => {
                 </motion.div>
 
                 {/* H1 */}
-                <h1 className="leading-tight tracking-[-0.03em] ">
+                <h1 className="leading-tight tracking-[-0.03em]">
                   <motion.span
                     variants={fadeUp}
                     initial="hidden"
@@ -340,8 +342,6 @@ const HomePage = ({ setPage }) => {
                     </span>
                   </motion.span>
                 </h1>
-
-                {/* Subheading */}
 
                 <motion.p
                   variants={fadeUp}
@@ -382,7 +382,7 @@ const HomePage = ({ setPage }) => {
                   initial="hidden"
                   animate="show"
                   custom={0.6}
-                  className="flex flex-wrap gap-4"
+                  className="flex flex-wrap gap-4 relative z-30"
                 >
                   <motion.button
                     whileHover={{ y: -2 }}
@@ -614,7 +614,6 @@ const HomePage = ({ setPage }) => {
                 opacity={0.1}
               />
 
-              {/* Ripple rings */}
               <RippleRing size={100} delay="0s" />
               <RippleRing size={180} delay="1s" />
               <RippleRing size={260} delay="2s" />
