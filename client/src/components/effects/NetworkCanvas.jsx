@@ -58,7 +58,13 @@ const NetworkCanvas = () => {
       window.removeEventListener("resize", resize);
     };
   }, []);
-  return <canvas ref={ref} className="absolute inset-0 w-full h-full" />;
+
+  return (
+    <canvas
+      ref={ref}
+      className="absolute inset-0 w-full h-full pointer-events-none"
+    />
+  );
 };
 
 export default NetworkCanvas;
